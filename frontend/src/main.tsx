@@ -8,7 +8,7 @@ import App from "./App.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/heat-strain">
       <TooltipProvider>
         <App />
       </TooltipProvider>
