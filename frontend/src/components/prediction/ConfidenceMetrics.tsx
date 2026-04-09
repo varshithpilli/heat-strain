@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Gauge from "@/components/ui/Gauge";
 import MetricBox from "@/components/ui/MetricBox";
-import { Brain, TrendingUp, Shield } from "lucide-react";
+import { TrendingUp, Shield } from "lucide-react";
 
 interface ConfidenceMetricsProps {
   heatProbabilities: number[];
@@ -16,7 +16,7 @@ export default function ConfidenceMetrics({
   heatClass,
   dehydrationProbabilities,
   dehydrationClass,
-  modelUsed,
+  // modelUsed,
 }: ConfidenceMetricsProps) {
   // Confidence = average of the predicted class probabilities
   const heatConf = heatProbabilities[heatClass] ?? 0;

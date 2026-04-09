@@ -2,19 +2,19 @@ import { usePrediction } from "@/hooks/usePrediction";
 import SensorInputs from "@/components/prediction/SensorInputs";
 import ProbabilityChart from "@/components/prediction/ProbabilityChart";
 import { Card, CardContent } from "@/components/ui/card";
-import { Sparkles, AlertCircle, Flame, Droplets, Brain, TrendingUp } from "lucide-react";
+import { Sparkles, AlertCircle, Flame, Droplets} from "lucide-react";
 
 interface DashboardProps {
   selectedModel: string;
 }
 
-const MODEL_DISPLAY: Record<string, string> = {
-  custom_nn: "Custom Neural Network",
-  random_forest: "Random Forest",
-  gradient_boost: "Gradient Boosting",
-  svm: "SVM",
-  logistic_reg: "Logistic Regression",
-};
+// const MODEL_DISPLAY: Record<string, string> = {
+//   custom_nn: "Custom Neural Network",
+//   random_forest: "Random Forest",
+//   gradient_boost: "Gradient Boosting",
+//   svm: "SVM",
+//   logistic_reg: "Logistic Regression",
+// };
 
 type RiskLevel = "Normal" | "Moderate" | "High";
 
@@ -50,9 +50,9 @@ export default function Dashboard({ selectedModel }: DashboardProps) {
   const hasResult = heat && dehydration;
 
   // Compute confidence from predicted class probabilities
-  const confidence = hasResult
-    ? (heat.probabilities[heat.class] + dehydration.probabilities[dehydration.class]) / 2
-    : 0;
+  // const confidence = hasResult
+  //   ? (heat.probabilities[heat.class] + dehydration.probabilities[dehydration.class]) / 2
+  //   : 0;
 
   return (
     <div className="grid min-h-[calc(100vh-7rem)] grid-cols-1 gap-4 lg:grid-cols-[340px_1fr] lg:items-stretch">

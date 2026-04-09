@@ -83,9 +83,9 @@ export default function CVChart({ data, title }: CVChartProps) {
             />
             <Tooltip
               contentStyle={tooltipStyle}
-              formatter={(value: number, name: string) => [
-                `${value.toFixed(2)}%`,
-                name === "mean" ? "CV Mean" : name,
+              formatter={(value, name) => [
+                `${Number(value).toFixed(2)}%`,
+                name === "mean" ? "CV Mean" : String(name),
               ]}
             />
             <Bar

@@ -65,7 +65,7 @@ export default function ProbabilityChart({
             />
             <Tooltip
               contentStyle={tooltipStyle}
-              formatter={(value: number) => [`${value}%`]}
+              formatter={(value) => [`${value}%`]}
             />
             <Legend
               wrapperStyle={{ fontSize: 11, color: "hsl(0 0% 50%)" }}

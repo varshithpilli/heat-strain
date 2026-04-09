@@ -85,7 +85,7 @@ export default function ModelComparisonChart({ target }: ChartProps) {
                 <CartesianGrid strokeDasharray="3 3" stroke="hsl(0 0% 18%)" vertical={false} />
                 <XAxis dataKey="model" tick={{ fill: "hsl(0 0% 50%)", fontSize: 10 }} axisLine={{ stroke: "hsl(0 0% 18%)" }} tickLine={false} />
                 <YAxis domain={[85, 100]} tick={{ fill: "hsl(0 0% 50%)", fontSize: 11 }} axisLine={false} tickLine={false} tickFormatter={(v: number) => `${v}%`} />
-                <Tooltip contentStyle={tooltipStyle} formatter={(value: number) => [`${value}%`]} />
+                <Tooltip contentStyle={tooltipStyle} formatter={(value) => [`${value}%`]} />
                 <Legend wrapperStyle={{ fontSize: 11, color: "hsl(0 0% 50%)" }} />
                 <Bar dataKey="accuracy" name="Accuracy" fill="hsl(0 0% 60%)" radius={[3, 3, 0, 0]} maxBarSize={28} />
                 <Bar dataKey="f1" name="F1 Score" fill="hsl(0 0% 48%)" radius={[3, 3, 0, 0]} maxBarSize={28} />
