@@ -18,12 +18,13 @@ twilio_to    = os.getenv("TWILIO_TO")
 app = FastAPI(title="HeatGuard API")
 
 origins = [
-    "http://localhost:5173",  # React/Vite dev server
+    "http://localhost:5173",
+    "https://varzone.in",
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # for development
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],  # allow OPTIONS
     allow_headers=["*"],
