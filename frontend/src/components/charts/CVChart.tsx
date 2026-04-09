@@ -20,6 +20,7 @@ export interface CVEntry {
 
 export const HEAT_CV: CVEntry[] = [
   { model: "Custom Neural Net", mean: 95.86, std: 0.33, status: "Excellent" },
+  { model: "GAT Neural Network", mean: 93.07, std: 0.97, status: "Good" },
   { model: "Random Forest", mean: 99.67, std: 0.06, status: "Excellent" },
   { model: "Gradient Boosting", mean: 99.74, std: 0.05, status: "Excellent" },
   { model: "SVM (RBF)", mean: 97.09, std: 0.21, status: "Excellent" },
@@ -28,6 +29,7 @@ export const HEAT_CV: CVEntry[] = [
 
 export const DEHY_CV: CVEntry[] = [
   { model: "Custom Neural Net", mean: 96.54, std: 0.22, status: "Excellent" },
+  { model: "GAT Neural Network", mean: 96.53, std: 2.05, status: "Excellent" },
   { model: "Random Forest", mean: 99.38, std: 0.09, status: "Excellent" },
   { model: "Gradient Boosting", mean: 99.63, std: 0.04, status: "Excellent" },
   { model: "SVM (RBF)", mean: 97.78, std: 0.20, status: "Excellent" },

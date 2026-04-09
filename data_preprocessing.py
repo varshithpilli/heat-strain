@@ -13,18 +13,18 @@ FIXED:
 ═══════════════════════════════════════════════════════════════
 
 Actual dataset value ranges (measured):
-  body_temp      : 26 – 38.5 °C   (real data ceiling)
-  ambient_temp   : 19 – 36 °C
-  heart_rate     : 60 – 179 bpm
-  skin_resistance: 39 – 173 Ω     (P1)  /  20 – 435 Ω (P2)
-  humidity       : 42 – 99 %
+  body_temp      : 26 - 38.5 °C   (real data ceiling)
+  ambient_temp   : 19 - 36 °C
+  heart_rate     : 60 - 179 bpm
+  skin_resistance: 39 - 173 Ω     (P1)  /  20 - 435 Ω (P2)
+  humidity       : 42 - 99 %
 
 Synthetic High-risk extends to physiologically valid extremes:
-  body_temp      : 38.0 – 41.5 °C
-  ambient_temp   : 30 – 48 °C
-  heart_rate     : 145 – 210 bpm
-  skin_resistance: 130 – 450 Ω
-  humidity       : 20 – 55 %  (dry) or 80–100 % (humid heat)
+  body_temp      : 38.0 - 41.5 °C
+  ambient_temp   : 30 - 48 °C
+  heart_rate     : 145 - 210 bpm
+  skin_resistance: 130 - 450 Ω
+  humidity       : 20 - 55 %  (dry) or 80-100 % (humid heat)
 """
 
 import pandas as pd
@@ -41,7 +41,7 @@ LABEL_COLORS = {0: '#27AE60', 1: '#F39C12', 2: '#E74C3C'}
 def make_heat_stress_label(row):
     """
     Heat stress: 0=Normal, 1=Moderate, 2=High
-    Score ≥ 8 → High, 3–7 → Moderate, 0–2 → Normal
+    Score ≥ 8 → High, 3-7 → Moderate, 0-2 → Normal
     """
     temp = float(row.get('body_temp', 37.0))
     amb  = float(row.get('ambient_temp', 25.0))
@@ -87,7 +87,7 @@ def make_heat_stress_label(row):
 def make_dehydration_label(row):
     """
     Dehydration: 0=Normal, 1=Moderate, 2=High
-    Score ≥ 8 → High, 3–7 → Moderate, 0–2 → Normal
+    Score ≥ 8 → High, 3-7 → Moderate, 0-2 → Normal
     """
     sr   = float(row.get('skin_resistance', 80.0))
     temp = float(row.get('body_temp', 37.0))
@@ -437,10 +437,10 @@ def _smote_oversample(X, y, random_state=42, k=5):
 
 
 def load_all_data(
-    infant_path   = 'InfantSmartWear_TemperatureMonitoring_v1.csv',
-    wearable_path = 'wearable_sensor_data.csv',
-    p1_path       = 'Final_Dataframe_P1.csv',
-    p2_path       = 'Final_Dataframe_P2.csv',
+    infant_path   = './datasets/InfantSmartWear_TemperatureMonitoring_v1.csv',
+    wearable_path = './datasets/wearable_sensor_data.csv',
+    p1_path       = './datasets/Final_Dataframe_P1.csv',
+    p2_path       = './datasets/Final_Dataframe_P2.csv',
     n_syn_high    = 4000,
     n_syn_mod     = 1500,
     n_syn_normal  = 1000,
@@ -486,7 +486,10 @@ def load_all_data(
             cnt = vc.get(i, 0)
             p   = pct.get(i, 0.0)
             print(f"    {LABEL_NAMES[i]:8s} ({i}): {cnt:5d}  ({p}%)")
-
+            
+    combined.to_csv("combined_dataset.csv", index=False)
+    print("\n  Saved combined dataset -> combined_dataset.csv")
+    
     return combined
 
 
@@ -502,8 +505,9 @@ def get_feature_matrix(df, target='heat_stress_label', balance_strategy='smote_l
         print(f"  WARNING: classes {missing} are missing before balancing!")
 
     X_bal, y_bal = balance_classes(X, y, strategy=balance_strategy)
+    
+    print(f"[{target}] after balancing:", len(X_bal))
     return X_bal, y_bal, features
-
 
 
 if __name__ == '__main__':

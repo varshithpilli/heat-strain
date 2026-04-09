@@ -45,7 +45,6 @@ from sklearn.calibration import CalibratedClassifierCV
 
 sys.path.insert(0, os.path.dirname(__file__))
 from data_preprocessing import load_all_data, get_feature_matrix, LABEL_NAMES
-from neural_network import CustomNeuralNetwork
 
 INFANT_PATH   = './datasets/InfantSmartWear_TemperatureMonitoring_v1.csv'
 WEARABLE_PATH = './datasets/wearable_sensor_data.csv'
@@ -58,7 +57,6 @@ os.makedirs(OUT_DIR,  exist_ok=True)
 os.makedirs(PLOT_DIR, exist_ok=True)
 
 COLORS = {
-    'custom_nn'     : '#7F77DD',
     'random_forest' : '#1D9E75',
     'gradient_boost': '#EF9F27',
     'svm'           : '#D85A30',
@@ -66,7 +64,6 @@ COLORS = {
 }
 
 MODEL_DISPLAY = {
-    'custom_nn'     : '🧠 Custom Neural Network (scratch)',
     'random_forest' : '🌲 Random Forest',
     'gradient_boost': '🚀 Gradient Boosting',
     'svm'           : '🎯 SVM (RBF)',
@@ -75,19 +72,6 @@ MODEL_DISPLAY = {
 
 def get_models(n_features):
     return {
-        
-        'custom_nn': CustomNeuralNetwork(
-            hidden_sizes=(128, 64, 32),
-            n_classes=3,
-            lr=1e-3,
-            epochs=200,
-            batch_size=64,
-            l2=1e-4,
-            dropout_rates=(0.3, 0.2, 0.0),
-            patience=20,
-            lr_decay=0.97,
-            random_state=42,
-        ),
 
         'random_forest': Pipeline([
             ('scaler', StandardScaler()),
@@ -447,13 +431,14 @@ def main():
     print("  HeatGuard AI — 3-Class Training Pipeline")
     print("══════════════════════════════════════════════\n")
 
-    print("▶ Loading and merging datasets …")
-    df = load_all_data(
-        INFANT_PATH, WEARABLE_PATH, P1_PATH, P2_PATH,
-        n_syn_high=4000,
-        n_syn_mod=1500,
-        n_syn_normal=1000,
-    )
+    # print("▶ Loading and merging datasets …")
+    # df = load_all_data(
+    #     INFANT_PATH, WEARABLE_PATH, P1_PATH, P2_PATH,
+    #     n_syn_high=4000,
+    #     n_syn_mod=1500,
+    #     n_syn_normal=1000,
+    # )
+    df = pd.read_csv("combined_dataset.csv")
 
     print("\n▶ Plotting class distribution …")
     plot_class_distribution(df)

@@ -51,11 +51,15 @@ export default function About() {
       </div>
 
       {/* Two-column content */}
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+      {/* <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 items-start"> */}
+      <div className="columns-1 lg:columns-2 gap-6 space-y-6">
         {/* Left column */}
-        <div className="space-y-6">
+
+
+        <div className="flex flex-col gap-6">
+          
           {/* Custom Neural Network */}
-          <div>
+          <div className="break-inside-avoid">
             <h2 className="mb-3 font-heading text-sm font-semibold">Custom Neural Network</h2>
             <Card className="border-border bg-card">
               <CardContent className="space-y-3">
@@ -76,14 +80,8 @@ export default function About() {
         </div>
 
 
-
-
-
-
-
-
         {/* Input Features */}
-        <div>
+        <div className="break-inside-avoid mb-6">
           <h2 className="mb-3 font-heading text-sm font-semibold">Input Features</h2>
           <Card className="border-border bg-card">
             <CardContent className="">
@@ -98,41 +96,6 @@ export default function About() {
             </CardContent>
           </Card>
         </div>
-        {/* Classification System */}
-        <div>
-          <h2 className="mb-3 font-heading text-sm font-semibold">Classification System</h2>
-          <Card className="border-border bg-card">
-            <CardContent className="">
-              <Table>
-                <TableHeader>
-                  <TableRow className="border-border">
-                    <TableHead className="text-xs text-muted-foreground">Class</TableHead>
-                    <TableHead className="text-xs text-muted-foreground">Risk Level</TableHead>
-                    <TableHead className="text-xs text-muted-foreground">Action</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {RISK_CLASSES.map((cls) => (
-                    <TableRow key={cls.level} className="border-border">
-                      <TableCell className="text-sm tabular-nums">{cls.level}</TableCell>
-                      <TableCell className="text-sm font-medium">{cls.label}</TableCell>
-                      <TableCell className="text-sm text-muted-foreground">{cls.action}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </CardContent>
-          </Card>
-        </div>
-
-
-
-
-
-
-
-        {/* Right column */}
-        <div className="space-y-6">
 
           {/* Mobile Alert */}
           <div>
@@ -160,6 +123,77 @@ export default function About() {
 
 
 
+                  {/* Graph Attention Network */}
+          <div className="break-inside-avoid mb-6">
+            <h2 className="mb-3 font-heading text-sm font-semibold">Graph Attention Network</h2>
+            <Card className="border-border bg-card">
+              <CardContent className="space-y-3">
+                <ul className="space-y-2">
+                  <li className="flex items-start gap-2 text-sm">
+                    <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-muted-foreground" />
+                    <span><span className="font-medium">Architecture:</span> <span className="text-muted-foreground">GATConv(3→512, heads=8) → GATConv(512→128, heads=4) → skip-add → GlobalMeanPool → Dense(32) → n_classes</span></span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-muted-foreground" />
+                    <span><span className="font-medium">Graph structure:</span> <span className="text-muted-foreground">Correlation-based k-NN edges (k=4)</span></span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-muted-foreground" />
+                    <span><span className="font-medium">Activations:</span> <span className="text-muted-foreground">ReLU + Softmax</span></span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-muted-foreground" />
+                    <span><span className="font-medium">Optimiser:</span> <span className="text-muted-foreground">Adam (lr=0.001)</span></span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-muted-foreground" />
+                    <span><span className="font-medium">Regularisation:</span> <span className="text-muted-foreground">Dropout (0.3 / 0.3) + Batch Norm</span></span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-muted-foreground" />
+                    <span><span className="font-medium">Training:</span> <span className="text-muted-foreground">60 epochs + 5-fold CV + threshold calibration</span></span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+
+
+          {/* Classification System */}
+          <div className="break-inside-avoid mb-6">
+            <h2 className="mb-3 font-heading text-sm font-semibold">Classification System</h2>
+            <Card className="border-border bg-card">
+              <CardContent className="">
+                <Table>
+                  <TableHeader>
+                    <TableRow className="border-border">
+                      <TableHead className="text-xs text-muted-foreground">Class</TableHead>
+                      <TableHead className="text-xs text-muted-foreground">Risk Level</TableHead>
+                      <TableHead className="text-xs text-muted-foreground">Action</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {RISK_CLASSES.map((cls) => (
+                      <TableRow key={cls.level} className="border-border">
+                        <TableCell className="text-sm tabular-nums">{cls.level}</TableCell>
+                        <TableCell className="text-sm font-medium">{cls.label}</TableCell>
+                        <TableCell className="text-sm text-muted-foreground">{cls.action}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </CardContent>
+            </Card>
+          </div>
+
+
+
+
+
+
+
+        {/* Right column */}
+        <div className="space-y-6">
 
 
 

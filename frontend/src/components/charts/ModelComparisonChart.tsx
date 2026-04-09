@@ -29,6 +29,7 @@ export interface ModelPerf {
 
 export const HEAT_STRESS_DATA: ModelPerf[] = [
   { model: "Custom Neural Net", accuracy: 95.76, f1: 95.73, roc_auc: 99.50, cv_mean: 95.86, cv_std: 0.33 },
+  { model: "GAT Neural Network", accuracy: 93.37, f1: 93.36, roc_auc: 98.96, cv_mean: 93.07, cv_std: 0.97 },
   { model: "Random Forest",     accuracy: 99.46, f1: 99.46, roc_auc: 99.99, cv_mean: 99.67, cv_std: 0.06 },
   { model: "Gradient Boosting", accuracy: 99.69, f1: 99.69, roc_auc: 99.99, cv_mean: 99.74, cv_std: 0.05 },
   { model: "SVM (RBF)",         accuracy: 97.21, f1: 97.20, roc_auc: 99.85, cv_mean: 97.09, cv_std: 0.21 },
@@ -37,6 +38,7 @@ export const HEAT_STRESS_DATA: ModelPerf[] = [
 
 export const DEHYDRATION_DATA: ModelPerf[] = [
   { model: "Custom Neural Net", accuracy: 96.33, f1: 96.34, roc_auc: 99.73, cv_mean: 96.54, cv_std: 0.22 },
+  { model: "GAT Neural Network", accuracy: 97.05, f1: 97.08, roc_auc: 99.29, cv_mean: 96.53, cv_std: 2.05 },
   { model: "Random Forest",     accuracy: 99.31, f1: 99.31, roc_auc: 99.99, cv_mean: 99.38, cv_std: 0.09 },
   { model: "Gradient Boosting", accuracy: 99.38, f1: 99.38, roc_auc: 99.99, cv_mean: 99.63, cv_std: 0.04 },
   { model: "SVM (RBF)",         accuracy: 97.48, f1: 97.48, roc_auc: 99.89, cv_mean: 97.78, cv_std: 0.20 },

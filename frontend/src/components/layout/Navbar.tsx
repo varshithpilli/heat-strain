@@ -11,6 +11,7 @@ import { Brain, Menu } from "lucide-react";
 /** Maps backend model key → display name */
 const MODELS: { key: string; label: string }[] = [
   { key: "custom_nn", label: "Custom Neural Network" },
+  { key: "gat", label: "GAT Neural Network" },
   { key: "random_forest", label: "Random Forest" },
   { key: "gradient_boost", label: "Gradient Boosting" },
   { key: "svm", label: "SVM" },

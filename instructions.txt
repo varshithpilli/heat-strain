@@ -8,3 +8,11 @@ streamlit run app.py
 
 
 browser - 125%
+
+
+backend.py, streamlit.py, data_preprocessing.py -> standalone files with no file dependencies
+combined_dataset.csv has the final dataset to be trained on after data_preprocessing.py
+
+custom_model.py -> the main model of the project which is standalone, used to define the model class.
+
+train_models.py -> imports from data_preprocessing.py and custom_model.py and the actual training of models happens here.
